@@ -100,7 +100,7 @@ function LoginForm() {
           <button
             type="button"
             onClick={() => setShowPassword((v) => !v)}
-            className="absolute top-1/2 right-4 -translate-y-1/2 text-slate-400 transition-colors hover:text-slate-600 dark:hover:text-slate-300"
+            className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer text-slate-400 transition-colors hover:text-slate-600 dark:hover:text-slate-300"
           >
             {showPassword ? <EyeOffIcon className="size-4" /> : <EyeIcon className="size-4" />}
             <span className="sr-only">{showPassword ? "Hide" : "Show"} password</span>

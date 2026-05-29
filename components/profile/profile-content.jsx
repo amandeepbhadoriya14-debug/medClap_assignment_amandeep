@@ -84,9 +84,8 @@ export function ProfileContent() {
     setEditing(false);
   };
 
-  const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const memberSince = user?.createdAt
-    ? `${MONTHS[new Date(user.createdAt).getMonth()]} ${new Date(user.createdAt).getFullYear()}`
+    ? new Date(user.createdAt).toLocaleDateString("en-US", { month: "long", year: "numeric" })
     : "—";
 
   return (
@@ -194,12 +193,12 @@ export function ProfileContent() {
             </Field>
 
             {editing ? (
-              <div className="flex flex-wrap items-center justify-end gap-3 border-t border-[#edf2f4] pt-4 dark:border-white/[0.08]">
+              <div className="flex flex-col gap-3 border-t border-[#edf2f4] pt-4 sm:flex-row sm:items-center sm:justify-end dark:border-white/[0.08]">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={cancel}
-                  className="h-11 min-w-[120px] rounded-xl border-[#e3eaee] text-sm font-semibold shadow-none dark:border-white/[0.08]"
+                  className="h-11 w-full rounded-xl border-[#e3eaee] text-sm font-semibold shadow-none sm:w-auto sm:min-w-[120px] dark:border-white/[0.08]"
                 >
                   <XIcon className="size-4" />
                   Cancel
@@ -207,7 +206,7 @@ export function ProfileContent() {
                 <Button
                   type="submit"
                   disabled={isSubmitting || !isDirty}
-                  className="h-11 min-w-[150px] rounded-xl bg-[#2db3bf] px-6 text-sm font-semibold text-white hover:bg-[#22a6b2]"
+                  className="h-11 w-full rounded-xl bg-[#2db3bf] px-6 text-sm font-semibold text-white hover:bg-[#22a6b2] sm:w-auto sm:min-w-[150px]"
                 >
                   {isSubmitting ? <Loader2Icon className="size-4 animate-spin" /> : <SaveIcon className="size-4" />}
                   {isSubmitting ? "Saving..." : "Save Changes"}

@@ -13,7 +13,7 @@ const options = [
 ];
 
 const baseButton =
-  "flex size-8 items-center justify-center rounded-full transition-colors";
+  "flex size-8 cursor-pointer items-center justify-center rounded-full transition-colors duration-200";
 const inactiveButton =
   "text-slate-500 hover:bg-slate-100 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-white/[0.06] dark:hover:text-white";
 const activeButton = "bg-[#2db3bf] text-white shadow-sm";
@@ -48,35 +48,41 @@ export function ThemeToggle() {
       ref={ref}
       role="radiogroup"
       aria-label="Theme"
-      className="inline-flex items-center gap-0.5 rounded-full border border-slate-200 bg-white p-1 dark:border-white/[0.08] dark:bg-white/[0.04]"
+      className="inline-flex items-center gap-0.5 overflow-hidden rounded-full border border-slate-200 bg-white p-1 transition-all duration-300 ease-in-out dark:border-white/[0.08] dark:bg-white/[0.04]"
     >
       {open ? (
-        options.map((option, index) => {
-          const Icon = option.icon;
-          const isActive = mounted && theme === option.value;
-          return (
-            <button
-              key={option.value}
-              type="button"
-              role="radio"
-              aria-checked={isActive}
-              aria-label={option.label}
-              title={option.label}
-              style={{ animationDelay: `${index * 160}ms`, animationFillMode: "both" }}
-              onClick={() => {
-                setTheme(option.value);
-                setOpen(false);
-              }}
-              className={cn(
-                baseButton,
-                "animate-in fade-in-0 slide-in-from-left-3 duration-700 ease-out",
-                isActive ? activeButton : inactiveButton
-              )}
-            >
-              <Icon className="size-4" />
-            </button>
-          );
-        })
+        <>
+          {options.map((option, index) => {
+            const Icon = option.icon;
+            const isActive = mounted && theme === option.value;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                role="radio"
+                aria-checked={isActive}
+                aria-label={option.label}
+                title={option.label}
+                style={{
+                  animationDelay: `${index * 80}ms`,
+                  animationFillMode: "both",
+                  animationDuration: "350ms",
+                }}
+                onClick={() => {
+                  setTheme(option.value);
+                  setOpen(false);
+                }}
+                className={cn(
+                  baseButton,
+                  "animate-in fade-in-0 zoom-in-75 ease-out",
+                  isActive ? activeButton : inactiveButton
+                )}
+              >
+                <Icon className="size-4" />
+              </button>
+            );
+          })}
+        </>
       ) : (
         <button
           type="button"

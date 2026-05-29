@@ -90,7 +90,7 @@ export function NotificationsButton() {
               <button
                 type="button"
                 aria-label="Close notifications"
-                className="flex size-8 shrink-0 items-center justify-center rounded-full bg-rose-500 text-white shadow-sm transition-colors hover:bg-rose-600"
+                className="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground dark:hover:bg-white/[0.08]"
               >
                 <XIcon className="size-4" />
               </button>
@@ -118,7 +118,7 @@ export function NotificationsButton() {
                         )
                       }
                       className={cn(
-                        "flex w-full items-start gap-3 rounded-xl px-3 py-3 text-left transition-colors hover:bg-muted/60 dark:hover:bg-white/[0.04]",
+                        "flex w-full cursor-pointer items-start gap-3 rounded-xl px-3 py-3 text-left transition-colors hover:bg-muted/60 dark:hover:bg-white/[0.04]",
                         n.unread && "bg-[#f3fbfc] dark:bg-white/[0.03]"
                       )}
                     >

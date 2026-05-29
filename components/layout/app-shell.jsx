@@ -11,6 +11,7 @@ import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 const titles = {
   "/dashboard": "Dashboard",
   "/profile": "My Profile",
+  "/users": "Users",
 };
 
 export function AppShell({ user, children }) {

@@ -63,7 +63,7 @@ export function DashboardContent() {
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {data
           ? data.stats.map((stat) => <StatCard key={stat.key} stat={stat} />)
-          : Array.from({ length: 4 }).map((_, i) => <StatSkeleton key={i} />)}
+          : [1, 2, 3, 4].map((i) => <StatSkeleton key={i} />)}
       </section>
 
       <section className="grid gap-4 lg:grid-cols-[1.5fr_1fr]">
@@ -129,12 +129,12 @@ export function DashboardContent() {
   );
 }
 
-const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
 function WelcomeCard({ user }) {
-  const now = new Date();
-  const today = `${WEEKDAYS[now.getDay()]}, ${MONTHS[now.getMonth()]} ${now.getDate()}`;
+  const today = new Date().toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <Card className="border-0 bg-[linear-gradient(135deg,#ffffff_0%,#f4fcfe_46%,#edf6ff_100%)] py-0 ring-1 ring-[#dfecef] shadow-[0_18px_40px_-32px_rgba(148,163,184,0.35)] dark:bg-[radial-gradient(circle_at_right,_rgba(45,179,191,0.18),_rgba(22,34,48,0)_42%),linear-gradient(135deg,_#162230_0%,_#101a28_54%,_#0d1622_100%)] dark:ring-white/[0.05] dark:shadow-none">
@@ -175,8 +175,7 @@ function StatCard({ stat }) {
   const Icon = tone.icon;
   const positive = stat.change >= 0;
   const TrendIcon = positive ? ArrowUpRightIcon : ArrowDownRightIcon;
-  const formatted =
-    stat.value >= 1000 ? stat.value.toLocaleString() : stat.value;
+  const formatted = stat.value >= 1000 ? stat.value.toLocaleString() : stat.value;
 
   return (
     <Card className={cardClass}>
@@ -191,8 +190,7 @@ function StatCard({ stat }) {
           </span>
         </div>
         <p className="mt-4 text-[1.9rem] font-semibold tracking-tight text-slate-900 dark:text-white">
-          {formatted}
-          {stat.suffix || ""}
+          {formatted}{stat.suffix || ""}
         </p>
         <p className="text-[13px] font-medium text-slate-500 dark:text-slate-400">{stat.label}</p>
       </CardContent>
@@ -297,7 +295,7 @@ function StatSkeleton() {
 function TableSkeleton() {
   return (
     <div className="space-y-3">
-      {Array.from({ length: 5 }).map((_, i) => (
+      {[1, 2, 3, 4, 5].map((i) => (
         <div key={i} className="flex items-center gap-3">
           <Skeleton className="size-9 rounded-full" />
           <div className="flex-1 space-y-1.5">
@@ -314,7 +312,7 @@ function TableSkeleton() {
 function FeedSkeleton() {
   return (
     <div className="space-y-3">
-      {Array.from({ length: 5 }).map((_, i) => (
+      {[1, 2, 3, 4, 5].map((i) => (
         <div key={i} className="flex items-center gap-3">
           <Skeleton className="size-9 rounded-full" />
           <div className="flex-1 space-y-1.5">
