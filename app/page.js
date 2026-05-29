@@ -46,7 +46,7 @@ export default function Home() {
             <HexagonIcon className="size-6 fill-current opacity-20" />
             <span className="absolute text-sm font-black">M</span>
           </div>
-          <span className="text-lg font-semibold tracking-tight text-slate-900 dark:text-white">
+          <span className="hidden md:block text-lg font-semibold tracking-tight text-slate-900 dark:text-white">
             MedClap
           </span>
         </div>
@@ -143,10 +143,16 @@ export default function Home() {
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-3 px-5 text-sm text-slate-400 sm:flex-row sm:px-8 dark:text-slate-500">
           <p>© {new Date().getFullYear()} MedClap. Built with Next.js.</p>
           <div className="flex items-center gap-5">
-            <Link href="/login" className="transition-colors hover:text-slate-600 dark:hover:text-slate-300">
+            <Link
+              href="/login"
+              className="transition-colors hover:text-slate-600 dark:hover:text-slate-300"
+            >
               Sign in
             </Link>
-            <Link href="/register" className="transition-colors hover:text-slate-600 dark:hover:text-slate-300">
+            <Link
+              href="/register"
+              className="transition-colors hover:text-slate-600 dark:hover:text-slate-300"
+            >
               Register
             </Link>
           </div>
