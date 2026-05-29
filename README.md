@@ -175,20 +175,3 @@ npm run build    # production build
 npm run start    # serve production build
 npm run lint     # eslint
 ```
-
----
-
-## Assignment Checklist
-
-- [x] Register and login pages with email/password
-- [x] Google OAuth login
-- [x] JWT authentication
-- [x] Public and protected routes with redirect
-- [x] Dashboard with user info and API data
-- [x] Profile view, edit, and save to JSON database
-- [x] Changes reflect immediately after update
-- [x] API routes for register, login, profile (GET/PUT), dashboard, users
-- [x] Protected APIs reject unauthenticated requests
-- [x] Automatic logout when Google session is revoked
-- [x] Responsive design — mobile, tablet, desktop
-- [x] Loading skeletons, error states, form validation, toast notifications
