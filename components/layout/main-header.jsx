@@ -40,7 +40,7 @@ export function MainHeader({ title, onOpenNavigation }) {
           <span className="sr-only">Open menu</span>
         </Button>
 
-        <div className="min-w-0 lg:hidden">
+        <div className="min-w-0 flex-1 lg:hidden">
           <p className="truncate text-sm font-semibold text-foreground">{title}</p>
         </div>
 
@@ -54,7 +54,7 @@ export function MainHeader({ title, onOpenNavigation }) {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
           <NotificationsButton />
 
           <ThemeToggle />
@@ -63,7 +63,7 @@ export function MainHeader({ title, onOpenNavigation }) {
             <DropdownMenuTrigger asChild>
               <button
                 type="button"
-                className="hidden items-center gap-3 rounded-full border border-border bg-background py-1.5 pr-3 pl-1.5 shadow-sm transition-colors hover:bg-muted dark:border-white/[0.08] dark:bg-white/[0.04] sm:flex"
+                className="flex items-center gap-2 rounded-full border border-border bg-background p-1 shadow-sm transition-colors hover:bg-muted sm:gap-3 sm:py-1.5 sm:pr-3 sm:pl-1.5 dark:border-white/[0.08] dark:bg-white/[0.04]"
               >
                 <Avatar size="lg" className="size-9">
                   {user?.avatar ? <AvatarImage src={user.avatar} alt={user.name} /> : null}
@@ -71,7 +71,7 @@ export function MainHeader({ title, onOpenNavigation }) {
                     {initials(user?.name)}
                   </AvatarFallback>
                 </Avatar>
-                <div className="min-w-0 max-w-[140px] text-left">
+                <div className="hidden min-w-0 max-w-[140px] text-left sm:block">
                   <p className="truncate text-sm font-medium text-foreground">
                     {user?.name}
                   </p>
@@ -79,7 +79,7 @@ export function MainHeader({ title, onOpenNavigation }) {
                     {user?.email}
                   </p>
                 </div>
-                <ChevronDownIcon className="size-4 text-muted-foreground" />
+                <ChevronDownIcon className="hidden size-4 text-muted-foreground sm:block" />
               </button>
             </DropdownMenuTrigger>
 

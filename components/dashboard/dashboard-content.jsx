@@ -60,7 +60,7 @@ export function DashboardContent() {
     <div className="space-y-5">
       <WelcomeCard user={user} />
 
-      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {data
           ? data.stats.map((stat) => <StatCard key={stat.key} stat={stat} />)
           : Array.from({ length: 4 }).map((_, i) => <StatSkeleton key={i} />)}
@@ -139,20 +139,20 @@ function WelcomeCard({ user }) {
   return (
     <Card className="border-0 bg-[linear-gradient(135deg,#ffffff_0%,#f4fcfe_46%,#edf6ff_100%)] py-0 ring-1 ring-[#dfecef] shadow-[0_18px_40px_-32px_rgba(148,163,184,0.35)] dark:bg-[radial-gradient(circle_at_right,_rgba(45,179,191,0.18),_rgba(22,34,48,0)_42%),linear-gradient(135deg,_#162230_0%,_#101a28_54%,_#0d1622_100%)] dark:ring-white/[0.05] dark:shadow-none">
       <CardContent className="flex flex-col gap-4 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-7">
-        <div className="flex items-center gap-4">
-          <Avatar className="size-14 ring-4 ring-white/70 dark:ring-white/[0.06]">
+        <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+          <Avatar className="size-12 shrink-0 ring-4 ring-white/70 sm:size-14 dark:ring-white/[0.06]">
             {user?.avatar ? <AvatarImage src={user.avatar} alt={user.name} /> : null}
             <AvatarFallback className="bg-[linear-gradient(135deg,#2db3bf,#0f172a)] text-base font-semibold text-white">
               {initials(user?.name)}
             </AvatarFallback>
           </Avatar>
-          <div>
+          <div className="min-w-0">
             <p suppressHydrationWarning className="text-xs font-medium text-slate-500 dark:text-slate-400">{today}</p>
-            <h1 className="text-[1.6rem] font-semibold tracking-tight text-slate-900 dark:text-white">
+            <h1 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-[1.6rem] dark:text-white">
               Welcome back, {user?.name?.split(" ")[0] || "there"} 👋
             </h1>
-            <div className="mt-1.5 flex flex-wrap items-center gap-2">
-              <span className="text-sm text-slate-500 dark:text-slate-400">{user?.email}</span>
+            <div className="mt-1.5 flex min-w-0 flex-wrap items-center gap-2">
+              <span className="max-w-full truncate text-sm text-slate-500 dark:text-slate-400">{user?.email}</span>
               {user?.provider === "google" ? (
                 <Badge variant="outline" className="gap-1 rounded-full border-[#dbe7ea] bg-white/70 text-[11px] text-slate-600 dark:border-white/[0.08] dark:bg-white/[0.04] dark:text-slate-300">
                   <GoogleIcon className="size-3" /> Google
@@ -210,13 +210,13 @@ function RecentUsers({ users }) {
   }
   return (
     <div className="-mx-2 overflow-x-auto">
-      <table className="w-full min-w-[420px] border-collapse">
+      <table className="w-full border-collapse">
         <thead>
           <tr className="text-left text-[11px] font-semibold uppercase tracking-wide text-slate-400">
             <th className="px-2 pb-3">User</th>
             <th className="px-2 pb-3">Role</th>
-            <th className="px-2 pb-3">Method</th>
-            <th className="px-2 pb-3">Joined</th>
+            <th className="hidden px-2 pb-3 md:table-cell">Method</th>
+            <th className="hidden px-2 pb-3 sm:table-cell">Joined</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-slate-100 dark:divide-white/[0.06]">
@@ -241,7 +241,7 @@ function RecentUsers({ users }) {
                   {u.role}
                 </Badge>
               </td>
-              <td className="px-2 py-3 text-slate-500 dark:text-slate-400">
+              <td className="hidden px-2 py-3 text-slate-500 md:table-cell dark:text-slate-400">
                 {u.provider === "google" ? (
                   <span className="inline-flex items-center gap-1.5">
                     <GoogleIcon className="size-3.5" /> Google
@@ -250,7 +250,7 @@ function RecentUsers({ users }) {
                   "Email"
                 )}
               </td>
-              <td className="px-2 py-3 text-slate-500 dark:text-slate-400">
+              <td className="hidden px-2 py-3 text-slate-500 sm:table-cell dark:text-slate-400">
                 {new Date(u.joined).toLocaleDateString()}
               </td>
             </tr>
