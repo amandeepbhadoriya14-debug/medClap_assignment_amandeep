@@ -41,17 +41,9 @@ export function MainHeader({ title, onOpenNavigation }) {
         </Button>
 
         <div className="min-w-0 flex-1 lg:hidden">
-          <p className="truncate text-sm font-semibold text-foreground">{title}</p>
-        </div>
-
-        <div className="ml-auto hidden min-w-[320px] flex-1 justify-end lg:flex">
-          <div className="relative w-full max-w-md">
-            <SearchIcon className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              placeholder="Search users, activity, settings..."
-              className="h-11 rounded-full border-border bg-muted/60 pl-11 pr-4 text-foreground shadow-none dark:border-white/[0.08] dark:bg-white/[0.04]"
-            />
-          </div>
+          <p className="truncate text-sm font-semibold text-foreground">
+            {title}
+          </p>
         </div>
 
         <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
@@ -66,7 +58,9 @@ export function MainHeader({ title, onOpenNavigation }) {
                 className="flex cursor-pointer items-center gap-2 rounded-full border border-border bg-background p-1 shadow-sm transition-colors hover:bg-muted sm:gap-3 sm:py-1.5 sm:pr-3 sm:pl-1.5 dark:border-white/[0.08] dark:bg-white/[0.04]"
               >
                 <Avatar size="lg" className="size-9">
-                  {user?.avatar ? <AvatarImage src={user.avatar} alt={user.name} /> : null}
+                  {user?.avatar ? (
+                    <AvatarImage src={user.avatar} alt={user.name} />
+                  ) : null}
                   <AvatarFallback className="bg-[linear-gradient(135deg,#2db3bf,#0f172a)] text-xs font-semibold text-white">
                     {initials(user?.name)}
                   </AvatarFallback>
@@ -90,21 +84,30 @@ export function MainHeader({ title, onOpenNavigation }) {
             >
               <div className="flex items-center gap-2.5 rounded-lg bg-muted/50 px-2.5 py-2 dark:bg-white/[0.04]">
                 <Avatar size="sm" className="size-8 shrink-0">
-                  {user?.avatar ? <AvatarImage src={user.avatar} alt={user.name} /> : null}
+                  {user?.avatar ? (
+                    <AvatarImage src={user.avatar} alt={user.name} />
+                  ) : null}
                   <AvatarFallback className="bg-[linear-gradient(135deg,#2db3bf,#0f172a)] text-xs font-semibold text-white">
                     {initials(user?.name)}
                   </AvatarFallback>
                 </Avatar>
                 <div className="min-w-0">
-                  <p className="truncate text-xs font-semibold text-foreground">{user?.name}</p>
-                  <p className="truncate text-[11px] text-muted-foreground">{user?.email}</p>
+                  <p className="truncate text-xs font-semibold text-foreground">
+                    {user?.name}
+                  </p>
+                  <p className="truncate text-[11px] text-muted-foreground">
+                    {user?.email}
+                  </p>
                 </div>
               </div>
 
               <div className="my-1.5 h-px bg-border" />
 
               <DropdownMenuItem asChild>
-                <Link href="/profile" className="cursor-pointer gap-2.5 rounded-lg px-2 py-1.5">
+                <Link
+                  href="/profile"
+                  className="cursor-pointer gap-2.5 rounded-lg px-2 py-1.5"
+                >
                   <span className="flex size-6 items-center justify-center rounded-md bg-muted text-muted-foreground dark:bg-white/[0.06]">
                     <UserRoundIcon className="size-3.5" />
                   </span>
@@ -112,7 +115,10 @@ export function MainHeader({ title, onOpenNavigation }) {
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/dashboard" className="cursor-pointer gap-2.5 rounded-lg px-2 py-1.5">
+                <Link
+                  href="/dashboard"
+                  className="cursor-pointer gap-2.5 rounded-lg px-2 py-1.5"
+                >
                   <span className="flex size-6 items-center justify-center rounded-md bg-muted text-muted-foreground dark:bg-white/[0.06]">
                     <LayoutDashboardIcon className="size-3.5" />
                   </span>
